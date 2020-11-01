@@ -1,0 +1,36 @@
+.header {
+  align-content: center;
+  text-align: center;
+  min-height: 10vh;
+  font-size: 40px;
+  background-color: #968c83;
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.main{
+  align-content: center;
+  text-align: center;
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.menu-button{
+  border-radius: 8px;
+  text-align: center;
+  color: #555555;
+  padding: 30px 40px;
+  width: 300px;
+  background-color: #d6d2c4;
+  margin-top: 2vh;
+}
+
+.lab-test {
+  font-family: "Arial Black", Gadget, sans-serif;
+  align-content: center;
+  text-align: center;
+  margin-top: 2vh;
+  margin-left: 20vh;
+  margin-right: 20vh;
+  border-radius: 12px;
+  border: 3px solid ;
+  border-color: #555555;
+}
