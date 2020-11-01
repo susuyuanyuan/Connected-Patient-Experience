@@ -1,6 +1,6 @@
 # The namespace to deploy your application
 global:
-    namespace: ns-connected-patient-experience
+  namespace: ns-connected-patient-experience
 
 # Default values for webapp.
 # This is a YAML-formatted file.
