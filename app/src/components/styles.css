@@ -1,36 +1,45 @@
 .header {
-  align-content: center;
   text-align: center;
+  margin-left: 0vh;
+  margin-right: 0vh;
   min-height: 10vh;
   font-size: 40px;
-  background-color: #968c83;
+  color: #9ba4b4;
+  background-color: #394867;
   font-family: "Arial Black", Gadget, sans-serif;
 }
-
+.headerText {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 20px;
+}
 .main{
   align-content: center;
   text-align: center;
+  background-color: #f1f6f9;
   font-family: "Arial Black", Gadget, sans-serif;
 }
 
 .menu-button{
   border-radius: 8px;
   text-align: center;
-  color: #555555;
+  color: #9ba4b4;
   padding: 30px 40px;
   width: 300px;
-  background-color: #d6d2c4;
+  background-color: #394867;
   margin-top: 2vh;
+  margin-bottom: 2vh;
 }
 
-.lab-test {
-  font-family: "Arial Black", Gadget, sans-serif;
+.lab-tests {
   align-content: center;
   text-align: center;
+}
+
+.lab-test-button {
+  font-family: "Arial Black", Gadget, sans-serif;
   margin-top: 2vh;
-  margin-left: 20vh;
-  margin-right: 20vh;
+  padding: 30px 30px;
+  width: 300px;
   border-radius: 12px;
-  border: 3px solid ;
-  border-color: #555555;
+  background-color: #394867;
 }
