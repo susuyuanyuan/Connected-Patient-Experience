@@ -1,5 +1,7 @@
 # Connected Patient Experience
 
+TODO(Chih-Yuan Su) Fill more details here
+
 # Author
 
 1. Xiaochu Lou, xlou34, xlou34@gatech.edu
