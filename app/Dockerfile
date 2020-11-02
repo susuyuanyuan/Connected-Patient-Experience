@@ -1,21 +1,21 @@
-FROM node:12-alpine as build
+FROM node:10-alpine as builder
 
-WORKDIR /app
+# install and cache app dependencies
+COPY package.json package-lock.json ./
+RUN npm install && mkdir /react-frontend && mv ./node_modules ./react-frontend
 
-ENV PATH /app/node_modules/.bin:$PATH
-
-COPY package*json ./
-
-RUN npm install
+WORKDIR /react-frontend
 
 COPY . .
 
 RUN npm run build
 
-FROM nginx:alpine
-
-COPY --from=build /app/build /usr/share/nginx/html
-
+# ------------------------------------------------------
+# Production Build
+# ------------------------------------------------------
+FROM nginx:1.16.0-alpine
+COPY --from=builder /react-frontend/build /usr/share/nginx/html
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/conf.d
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
