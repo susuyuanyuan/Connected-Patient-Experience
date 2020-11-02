@@ -7,7 +7,7 @@ frontend:
   replicaCount: 1
   proxy:
     incomingPath: /connected-patient-experience-app/
-    containerPath: "/usr/share/nginx/html"
+    containerPath: "/"
   image:
     repository: gt-build.hdap.gatech.edu/connected-patient-experience
     tag: latest
