@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Menu from './Menu';
-import Lab from './Lab';
-import Login from './Login';
-import './styles.css';
+import Menu from 'components/Menu';
+import Lab from 'components/Lab';
+import Login from 'components/Login';
+import 'components/styles.css';
 
 const App = () => {
   return (
