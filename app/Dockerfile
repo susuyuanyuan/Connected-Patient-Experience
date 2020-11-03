@@ -1,12 +1,12 @@
 FROM node:12-alpine as build
 
-WORKDIR /app
+# needed for serving at the right url when deployed in HDAP
+ENV PUBLIC_URL="/connected-patient-experience-app"
 ENV PATH /app/node_modules/.bin:$PATH
+WORKDIR /app
 COPY package*json ./
 RUN npm install
 COPY . .
-# needed for serving at the right url when deployed in HDAP
-ENV PUBLIC_URL="/connected-patient-experience-app"
 RUN npm run build
 
 
