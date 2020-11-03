@@ -5,6 +5,8 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package*json ./
 RUN npm install
 COPY . .
+# needed for serving at the right url when deployed in HDAP
+ENV PUBLIC_URL="/connected-patient-experience-app"
 RUN npm run build
 
 
