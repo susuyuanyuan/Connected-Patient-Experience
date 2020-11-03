@@ -6,6 +6,7 @@ import Login from 'components/Login';
 import 'components/styles.css';
 
 const App = () => {
+  return (<h1>Hello, world!</h1>);
   return (
     <Router>
       <div>
