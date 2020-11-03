@@ -11,8 +11,8 @@ const App = () => {
       <div>
         <Switch>
           <Route path="/" component={Menu} />
-          <Route path="./lab" component={Lab} />
-          <Route path="./login" component={Login} />
+          <Route path={`${match.url}/lab`} component={Lab} />
+          <Route path={`${match.url}/login`} component={Login} />
         </Switch>
       </div>
     </BrowserRouter>
