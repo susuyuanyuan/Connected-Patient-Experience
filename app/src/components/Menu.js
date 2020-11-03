@@ -26,7 +26,7 @@ const Menu = () => {
                 </div>
                 <div>
                     <button className="menu-button">
-                        <Link to="/lab" style={{ "color": "#f1f6f9" }}>
+                        <Link to="../lab" style={{ "color": "#f1f6f9" }}>
                             <i className="fas fa-vial" style={{ "color": "#0e918c" }}></i>
                             &nbsp;View Lab Results
                         </Link>
