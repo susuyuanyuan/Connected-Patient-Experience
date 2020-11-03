@@ -1,6 +1,6 @@
 {
   "name": "connected-patient-experience",
-  "homepage": "https://apps.hdap.gatech.edu/connected-patient-experience-app/",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
