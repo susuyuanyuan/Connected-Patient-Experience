@@ -1,5 +1,12 @@
 # Connected Patient Experience
 
+Deployed at:
+
+https://apps.hdap.gatech.edu/connected-patient-experience-app/
+
+Drone Page:
+https://drone.hdap.gatech.edu/gt-cs6440-hit-fall2020/Connected-Patient-Experience/
+
 TODO(Chih-Yuan Su) Fill more details here
 
 # Author
