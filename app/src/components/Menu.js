@@ -1,52 +1,105 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React from "react";
+import { useHistory } from "react-router-dom";
+import Header from "./Header";
 
 const Menu = () => {
-    return (
-        <div className="menu-container">
-            <header className="header">
-                <div>
-                    <i className="fas fa-sun" style={{ "color": "#f5a25d" }}></i>
-                    <p className="headerText">&nbsp;A Professional Medical Team make you smile like sunshine</p>
-                </div>
-                <h1>Sunshine Clinics</h1>
-            </header>
-            <main className="main">
-                <div>
-                    <button className="menu-button">
-                        <i className="fas fa-user-md" style={{ "color": "#0e918c" }}></i>
-                        &nbsp;Select Doctor
-                    </button>
-                </div>
-                <div>
-                    <button className="menu-button">
-                        <i className="fas fa-mail-bulk" style={{ "color": "#0e918c" }}></i>
-                        &nbsp;Messages
-                    </button>
-                </div>
-                <div>
-                    <button className="menu-button">
-                        <Link to="/lab" style={{ "color": "#f1f6f9" }}>
-                            <i className="fas fa-vial" style={{ "color": "#0e918c" }}></i>
-                            &nbsp;View Lab Results
-                        </Link>
-                    </button>
-                </div>
-                <div>
-                    <button className="menu-button">
-                        <i className="fas fa-capsules" style={{ "color": "#0e918c" }}></i>
-                        &nbsp;Pharmacy
-                    </button>
-                </div>
-                <div>
-                    <button className="menu-button">
-                        <i className="fas fa-book-medical" style={{ "color": "#0e918c" }}></i>
-                        &nbsp;Medical Records
-                    </button>
-                </div>
-            </main>
+  const history = useHistory();
+  return (
+    <div className="menu-container">
+      <Header />
+      <main className="main">
+        <div>
+          <div className="mt-1" style={{ color: "#FFFFFF" }}>
+            NA
+          </div>
+          <div className="main-grid">
+            <button
+              className="display-button"
+              onClick={() => history.push("/doctor")}
+            >
+              <i className="fas fa-user-md" style={{ color: "#34626c" }}></i>
+              &nbsp;Select Doctor
+            </button>
+            <button
+              className="display-button"
+              onClick={() => history.push("/messages")}
+            >
+              <i className="fas fa-mail-bulk" style={{ color: "#34626c" }}></i>
+              &nbsp;Messages
+            </button>
+            <button
+              className="display-button"
+              onClick={() => history.push("/lab")}
+            >
+              <i className="fas fa-vial" style={{ color: "#34626c" }}></i>
+              &nbsp;View Lab Results
+            </button>
+          </div>
+          <div className="main-grid">
+            <button
+              className="display-button"
+              onClick={() => history.push("/pharmacy")}
+            >
+              <i className="fas fa-capsules" style={{ color: "#34626c" }}></i>
+              &nbsp;Pharmacy
+            </button>
+            <button className="display-button">
+              <i
+                className="fas fa-book-medical"
+                style={{ color: "#34626c" }}
+              ></i>
+              &nbsp;Medical Records
+            </button>
+            <button
+              className="display-button"
+              onClick={() => history.push("/contact")}
+            >
+              <i className="fa fa-phone" style={{ color: "#34626c" }}></i>
+              &nbsp;Contact US
+            </button>
+          </div>
         </div>
-    );
-}
+      </main>
+    </div>
+  );
+};
 
 export default Menu;
+
+/*
+<main className="main">
+        <div className="main-grid">
+          <button
+            className="display-button"
+            onClick={() => history.push("/doctor")}
+          >
+            <i className="fas fa-user-md" style={{ color: "#0e918c" }}></i>
+            &nbsp;Select Doctor
+          </button>
+        </div>
+        <div className="main-grid">
+          <button className="display-button">
+            <i className="fas fa-mail-bulk" style={{ color: "#0e918c" }}></i>
+            &nbsp;Messages
+          </button>
+        </div>
+        <div className="main-grid">
+          <button className="display-button" onClick={() => history.push("/lab")}>
+            <i className="fas fa-vial" style={{ color: "#0e918c" }}></i>
+            &nbsp;View Lab Results
+          </button>
+        </div>
+        <div className="main-grid">
+          <button className="display-button">
+            <i className="fas fa-capsules" style={{ color: "#0e918c" }}></i>
+            &nbsp;Pharmacy
+          </button>
+        </div>
+        <div className="main-grid">
+          <button className="display-button">
+            <i className="fas fa-book-medical" style={{ color: "#0e918c" }}></i>
+            &nbsp;Medical Records
+          </button>
+        </div>
+      </main>
+*/

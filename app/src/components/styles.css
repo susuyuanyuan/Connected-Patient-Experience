@@ -1,45 +1,62 @@
-.header {
-  text-align: center;
-  margin-left: 0vh;
-  margin-right: 0vh;
-  min-height: 10vh;
-  font-size: 40px;
-  color: #9ba4b4;
-  background-color: #394867;
-  font-family: "Arial Black", Gadget, sans-serif;
+.header-container {
+  display: flex;
+  background-color: #34626c;
+  color: #cfd3ce;
+  font-family: "Times New Roman", Times, serif;
 }
-.headerText {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+.header-note {
+  text-align: center;
+  font-family: "Lucida Console";
   font-size: 20px;
+  margin-right: 15vh;
 }
-.main{
+
+.header {
+  font-size: 40px;
+}
+
+.main {
   align-content: center;
   text-align: center;
-  background-color: #f1f6f9;
-  font-family: "Arial Black", Gadget, sans-serif;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: "Times New Roman", Times, serif;
+}
+.main-grid {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
 }
 
-.menu-button{
-  border-radius: 8px;
+.display-button {
   text-align: center;
-  color: #9ba4b4;
-  padding: 30px 40px;
+  color: #cfd3ce;
   width: 300px;
-  background-color: #394867;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  height: 300px;
+  background-color: #839b97;
 }
 
-.lab-tests {
-  align-content: center;
+.back-button {
+  color: #cfd3ce;
+  background-color: #34626c;
   text-align: center;
+  padding: 20px 30px;
 }
 
-.lab-test-button {
-  font-family: "Arial Black", Gadget, sans-serif;
-  margin-top: 2vh;
-  padding: 30px 30px;
-  width: 300px;
-  border-radius: 12px;
-  background-color: #394867;
+.disabled-button {
+  color: #cfd3ce;
+  background-color: #839b97;
+  cursor: not-allowed;
+  text-align: center;
+  padding: 20px 30px;
+}
+
+.select-doctor {
+  font-size: 30px;
+}
+
+.message {
+  height: 300px;
+  width: 400px;
 }

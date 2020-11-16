@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = () => {
+const Login = props => {
     return (
         <div className="container">
             <header className="header">
@@ -25,9 +25,14 @@ const Login = () => {
                         />
                     </label>
                 </div>
-                <form>
-                    <button>Login</button>
-                </form>
+                <div>
+                    <button
+                        onClick={() => {
+                            props.history.push('/');
+                        }}>
+                        Login
+                        </button>
+                </div>
             </div>
         </div>
     );
