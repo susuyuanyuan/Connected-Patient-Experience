@@ -5,24 +5,25 @@ from config import settings
 from datetime import date, datetime
 from flasgger.utils import swag_from
 
-patient = Blueprint('patient',__name__)
+patient = Blueprint('patient', __name__)
 smart = client.FHIRClient(settings=settings)
 
 
 @patient.route("/fhir_patient/<patient_id>", methods=['GET'])
-@swag_from('YML/test.yml')
+@swag_from('YML/get_patient_by_id.yml')
 def get_patient_by_id(patient_id):
     #patient_id = request.args.get('id')
     #patient_id = '494743a2-fea5-4827-8f02-c2b91e4a4c9e'
     patient = p.Patient.read(patient_id, smart.server)
     return get_patient_data(patient)
 
+
 def get_patient_data(patient):
     patient_dict = {}
     if patient:
         # Patient data
         #patient_dict['id'] = patient.id
-        [name, first, last] = get_patient_name(patient)       # name
+        [name, first, last] = get_patient_name(patient)  # name
         patient_dict['name'] = name
         patient_dict['firstname'] = first
         patient_dict['lastname'] = last
@@ -32,10 +33,10 @@ def get_patient_data(patient):
         patient_dict['maritalstatus'] = get_patient_marital_status(patient)
         patient_dict['language'] = get_patient_language(patient)
         patient_dict['address'] = get_patient_address(patient)
-        patient_dict['phone'] =get_patient_phone(patient)
-
+        patient_dict['phone'] = get_patient_phone(patient)
 
     return jsonify(patient_dict)
+
 
 def get_patient_name(patient):
     if patient.name:
@@ -49,7 +50,8 @@ def get_patient_name(patient):
             last = patient.name[0].family
             name.append(last)
         return [name, first, last]
-    return ['', '' ,'']
+    return ['', '', '']
+
 
 def get_patient_address(patient):
     if patient.address:
@@ -68,31 +70,38 @@ def get_patient_address(patient):
                 return ', '.join(address)
         return ''
 
+
 def get_patient_gender(patient):
     if patient.gender:
         return patient.gender
     return ''
+
 
 def get_patient_birthday(patient):
     if patient.birthDate:
         return patient.birthDate.isostring
     return ''
 
+
 def get_patient_age(patient):
     if patient.birthDate:
         today = date.today()
         birthdate = datetime.strptime(patient.birthDate.isostring, '%Y-%m-%d')
-        return today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+        return today.year - birthdate.year - ((today.month, today.day) <
+                                              (birthdate.month, birthdate.day))
+
 
 def get_patient_language(patient):
     if patient.language:
         return patient.language
     return ''
 
+
 def get_patient_marital_status(patient):
     if patient.maritalStatus:
         return patient.maritalStatus.text
     return ''
+
 
 def get_patient_phone(patient):
     if patient.telecom:

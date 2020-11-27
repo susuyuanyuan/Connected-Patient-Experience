@@ -1,0 +1,22 @@
+tags:
+  - patient
+get:
+  summary: Get Patient by ID
+  description: ""
+  operationId: getPatientById
+  consumes:
+    - application/text
+  produces:
+    - application/json
+parameters:
+  - name: patient_id
+    in: path
+    description: patient Id
+    required: true
+    schema:
+      type: string
+responses:
+  "200":
+    description: Get Patient Succeed
+  "500":
+    description: Server Error
