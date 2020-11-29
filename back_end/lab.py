@@ -22,7 +22,7 @@ def get_lab_data(patient_id):
         results = search.perform_resources(smart.server)
         if len(results) > 0:
             try:
-                result_dict[loinc] = str(round(results[0].valueQuantity.value,2)) + ' '+ results[0].valueQuantity.unit
+                result_dict[config.lab_config[loinc]] = str(round(results[0].valueQuantity.value,2)) + ' '+ results[0].valueQuantity.unit
             except:
                 pass
 
