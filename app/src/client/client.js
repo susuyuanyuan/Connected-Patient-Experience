@@ -1,17 +1,10 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000/api/patients";
+const SERVER_URL = "http://localhost:5000";
+const PATIENT_API = SERVER_URL + "/api/patients";
 
-// get users
-export function getPatient(id) {
-  return (dispatch, getState) => {
-    axios
-      .get(URL + "&id=" + id)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+export async function FindUser(userName, password) {
+  return await axios.get(
+    PATIENT_API + "?username=" + userName + "&password=" + password
+  );
 }

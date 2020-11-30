@@ -1,6 +1,18 @@
 let mongoose = require("mongoose");
 let genderValues = ["M", "F", "NA"];
-let medicalRecordSchema = require("./MedicalRecord");
+
+let medicalRecordSchema = mongoose.Schema({
+  // unit in cm
+  height: Number,
+  // unit in kg
+  weight: Number,
+  // unit in mg/dL
+  HDL: Number,
+  // uint in mg/dL
+  LDL: Number,
+  // unit in mmHg
+  BP: Number,
+});
 
 let patientSchema = mongoose.Schema(
   {
@@ -10,6 +22,10 @@ let patientSchema = mongoose.Schema(
     name: {
       type: String,
       lowercase: true,
+      required: true,
+    },
+    password: {
+      type: String,
       required: true,
     },
     sex: {

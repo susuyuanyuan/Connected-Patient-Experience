@@ -1,9 +1,16 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Header from "./Header";
+import { useAuth } from "./Auth";
 
-const Menu = () => {
+const Menu = (props) => {
+  const user = useAuth().user;
   const history = useHistory();
+
+  if (!user) {
+    history.push("/");
+  }
+
   return (
     <div className="menu-container">
       <Header />

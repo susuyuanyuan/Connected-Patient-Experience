@@ -23,7 +23,7 @@ mongoose.connect(mongoUrl, {
 console.log(mongoose.connection.readyState);
 
 const ROUTE_PREFIX = "/api/patients";
-app.use(ROUTE_PREFIX + "/User", require("./routers/patientRouter"));
+app.use(ROUTE_PREFIX, require("./routers/patientRouter"));
 
 // listen on port 5000
 const PORT_NUM = 5000;

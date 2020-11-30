@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactHover, { Trigger, Hover } from "react-hover";
 import Header from "./Header";
+import { useAuth } from "./Auth";
 
 const Lab = ({ history }) => {
   const [showHeight, setShowHeight] = useState(false);
@@ -10,20 +11,15 @@ const Lab = ({ history }) => {
   const [showLDL, setShowLDL] = useState(false);
   const [showBP, setShowBP] = useState(false);
 
+  const user = useAuth().user;
+
   const optionsCursorTrueWithMargin = {
     followCursor: true,
     shiftX: 20,
     shiftY: 0,
   };
 
-  const lab = {
-    height: 64,
-    weight: 130,
-    bmi: 22.3,
-    hdl: 22,
-    ldl: 22,
-    bp: 80,
-  };
+  const medicalRecord = user.medicalRecords[0][0];
 
   return (
     <div className="lab-container">
@@ -37,7 +33,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowHeight(!showHeight)}
                 >
-                  {showHeight ? lab.height + " inches" : "Height"}
+                  {showHeight ? medicalRecord.height + " cm" : "Height"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -52,7 +48,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowWeight(!showWeight)}
                 >
-                  {showWeight ? lab.weight + " lbs" : "Weight"}
+                  {showWeight ? medicalRecord.weight + " kg" : "Weight"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -67,7 +63,12 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowBMI(!showBMI)}
                 >
-                  {showBMI ? lab.bmi : "BMI"}
+                  {showBMI
+                    ? Math.round(
+                        medicalRecord.weight /
+                          (medicalRecord.height * medicalRecord.height * 1e-4)
+                      )
+                    : "BMI"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -84,7 +85,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowHDL(!showHDL)}
                 >
-                  {showHDL ? lab.hdl : "HDL"}
+                  {showHDL ? medicalRecord.HDL : "HDL"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -99,7 +100,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowLDL(!showLDL)}
                 >
-                  {showLDL ? lab.ldl : "LDL"}
+                  {showLDL ? medicalRecord.LDL : "LDL"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -114,7 +115,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowBP(!showBP)}
                 >
-                  {showBP ? lab.bp : "BP"}
+                  {showBP ? medicalRecord.BP : "BP"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -126,7 +127,7 @@ const Lab = ({ history }) => {
         <button
           className="back-button ml-5 mt-5"
           onClick={() => {
-            history.push("/");
+            history.push("/home");
           }}
         >
           Back to Menu
