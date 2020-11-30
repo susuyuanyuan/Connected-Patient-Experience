@@ -6,12 +6,22 @@ concurrency:
 
 steps:
   # Create Docker image and push to HDAP Docker registry
-  - name: deploy_application_image
+  - name: deploy_application_frontend
     image: plugins/docker
     settings:
       repo: gt-build.hdap.gatech.edu/connected-patient-experience
       context: app
       dockerfile: app/Dockerfile
+      tags:
+        - latest
+
+  # Create Docker image and push to HDAP Docker registry
+  - name: deploy_application_backend
+    image: plugins/docker
+    settings:
+      repo: gt-build.hdap.gatech.edu/connected-patient-experience-backend
+      context: app
+      dockerfile: backend/Dockerfile
       tags:
         - latest
 
@@ -50,6 +60,7 @@ services:
 volumes:
   - name: dockersock
     temp: {}
+
 trigger:
   branch:
     - deploy

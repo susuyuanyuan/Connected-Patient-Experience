@@ -3,6 +3,8 @@ FROM node:lts as build
 # needed for serving at the right url when deployed in HDAP
 # ENV PUBLIC_URL="https://apps.hdap.gatech.edu/connected-patient-experience-app/"
 ENV PATH /app/node_modules/.bin:$PATH
+# used for getting the server address for the backend
+ENV REACT_APP_SERVER_URL https://apps.hdap.gatech.edu/connected-patient-experience-backend:5000
 WORKDIR /app
 COPY package*json ./
 RUN npm -v
