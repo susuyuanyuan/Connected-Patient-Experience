@@ -3,7 +3,9 @@ const Patient = require("./models/Patient");
 const mongoose = require("mongoose");
 const faker = require("faker");
 
-let mongoUrl = "mongodb://localhost:27017/patients";
+// let mongoUrl = "mongodb://localhost:27017/patients";
+let mongoUrl =
+  "mongodb+srv://group-project:Ka6V91u9Bm9g2Doo@cluster0.bf6rf.mongodb.net/patients?retryWrites=true&w=majority";
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 console.log(mongoose.connection.readyState);

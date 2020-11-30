@@ -23,6 +23,7 @@ mongoose.connect(mongoUrl, {
   useFindAndModify: false,
 });
 
+console.log("Using url: ", mongoUrl);
 console.log(mongoose.connection.readyState);
 
 const ROUTE_PREFIX = "/api/patients";
