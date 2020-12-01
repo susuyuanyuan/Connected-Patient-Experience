@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactHover, { Trigger, Hover } from "react-hover";
 import Header from "./Header";
 import { useAuth } from "./Auth";
@@ -19,7 +19,18 @@ const Lab = ({ history }) => {
     shiftY: 0,
   };
 
-  const medicalRecord = user.medicalRecords[0][0];
+  useEffect(() => {
+    if (
+      !user ||
+      !user.medicalRecords ||
+      user.medicalRecords.length === 0 ||
+      !user.medicalRecords[0]
+    ) {
+      history.push("/");
+    }
+  }, [user, history]);
+
+  const labResult = user.medicalRecords[0];
 
   return (
     <div className="lab-container">
@@ -33,7 +44,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowHeight(!showHeight)}
                 >
-                  {showHeight ? medicalRecord.height + " cm" : "Height"}
+                  {showHeight ? labResult.height + " cm" : "Height"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -48,7 +59,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowWeight(!showWeight)}
                 >
-                  {showWeight ? medicalRecord.weight + " kg" : "Weight"}
+                  {showWeight ? labResult.weight + " kg" : "Weight"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -65,8 +76,8 @@ const Lab = ({ history }) => {
                 >
                   {showBMI
                     ? Math.round(
-                        medicalRecord.weight /
-                          (medicalRecord.height * medicalRecord.height * 1e-4)
+                        labResult.weight /
+                          (labResult.height * labResult.height * 1e-4)
                       )
                     : "BMI"}
                 </button>
@@ -85,7 +96,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowHDL(!showHDL)}
                 >
-                  {showHDL ? medicalRecord.HDL : "HDL"}
+                  {showHDL ? labResult.HDL : "HDL"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -100,7 +111,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowLDL(!showLDL)}
                 >
-                  {showLDL ? medicalRecord.LDL : "LDL"}
+                  {showLDL ? labResult.LDL : "LDL"}
                 </button>
               </Trigger>
               <Hover type="hover">
@@ -115,7 +126,7 @@ const Lab = ({ history }) => {
                   className="display-button"
                   onClick={() => setShowBP(!showBP)}
                 >
-                  {showBP ? medicalRecord.BP : "BP"}
+                  {showBP ? labResult.BP : "BP"}
                 </button>
               </Trigger>
               <Hover type="hover">

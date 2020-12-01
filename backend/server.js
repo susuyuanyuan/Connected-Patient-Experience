@@ -12,7 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(require("cors")());
 
-let mongoUrl = "mongodb://localhost:27017/patients";
+let mongoUrl = process.env.MONGODB_URL
+  ? process.env.MONGODB_URL
+  : "mongodb://localhost:27017/patients";
+
 // connect to mongodb instance where database is testdb
 mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
@@ -20,6 +23,7 @@ mongoose.connect(mongoUrl, {
   useFindAndModify: false,
 });
 
+console.log("Using url: ", mongoUrl);
 console.log(mongoose.connection.readyState);
 
 const ROUTE_PREFIX = "/api/patients";
