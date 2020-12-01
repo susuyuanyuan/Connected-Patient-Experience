@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
+import { AddMessage } from "../client/client";
+import { useAuth } from "./Auth";
 
 const Messages = ({ history }) => {
   const [title, setTitle] = useState(null);
   const [message, setMessage] = useState(null);
+  const auth = useAuth();
+
+  useEffect(() => {
+    if (!auth.user) {
+      history.push("/home");
+    }
+  }, [auth, history]);
 
   const isValid = title !== null && message !== null;
   return (
@@ -12,7 +21,12 @@ const Messages = ({ history }) => {
       <main className="main">
         <form
           onSubmit={() => {
-            history.push("/");
+            if (title && message) {
+              AddMessage(auth.user, { subject: title, content: message });
+              history.push("/");
+            } else {
+              window.alert("Please input subject and content of your message");
+            }
           }}
         >
           <div>Subject:</div>

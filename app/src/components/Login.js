@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { useAuth } from "./Auth";
@@ -9,10 +9,6 @@ const Login = () => {
 
   const history = useHistory();
   const auth = useAuth();
-
-  if (auth.user) {
-    history.push("/home");
-  }
 
   let login = () => {
     auth.signin(
@@ -26,6 +22,12 @@ const Login = () => {
       }
     );
   };
+
+  useEffect(() => {
+    if (auth.user) {
+      history.push("/home");
+    }
+  }, [auth, history]);
 
   return (
     <div className="container">

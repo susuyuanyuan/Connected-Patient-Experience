@@ -14,7 +14,9 @@ const Doctor = ({ history }) => {
             name=""
             className="ml-3"
             id="doctor"
-            onChange={(e) => setDoctor(e.target.value)}
+            onChange={(e) => {
+              setDoctor(e.target.value);
+            }}
           >
             <option value="csu">Chih-Yuan Su</option>
             <option value="xlou">Xiaochu Lou</option>
