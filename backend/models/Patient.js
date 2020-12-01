@@ -1,24 +1,9 @@
 let mongoose = require("mongoose");
 let genderValues = ["M", "F", "NA"];
 
-let medicalRecordSchema = mongoose.Schema({
-  // unit in cm
-  height: Number,
-  // unit in kg
-  weight: Number,
-  // unit in mg/dL
-  HDL: Number,
-  // uint in mg/dL
-  LDL: Number,
-  // unit in mmHg
-  BP: Number,
-});
-
 let patientSchema = mongoose.Schema(
   {
-    photo: {
-      type: String,
-    },
+    photo: String,
     name: {
       type: String,
       lowercase: true,
@@ -33,10 +18,7 @@ let patientSchema = mongoose.Schema(
       enum: genderValues,
       required: true,
     },
-    doctorId: {
-      type: String,
-      required: false,
-    },
+    doctorName: String,
     phone: {
       type: String,
       required: true,
@@ -46,8 +28,34 @@ let patientSchema = mongoose.Schema(
       required: true,
     },
     medicalRecords: {
-      type: [medicalRecordSchema],
+      type: [
+        {
+          // unit in cm
+          height: Number,
+          // unit in kg
+          weight: Number,
+          // unit in mg/dL
+          HDL: Number,
+          // uint in mg/dL
+          LDL: Number,
+          // unit in mmHg
+          BP: Number,
+        },
+      ],
     },
+    messages: [
+      {
+        subject: String,
+        content: String,
+      },
+    ],
+    Pharmacy: [
+      {
+        drugName: String,
+        quantity: Number,
+        requestDate: Date,
+      },
+    ],
   },
   { collection: "patients" }
 );

@@ -23,8 +23,9 @@ function Authenticate(req, res) {
 patientRouter.get("/", (req, res) => {
   if (req.query.username && req.query.password) {
     Authenticate(req, res);
+  } else {
+    res.status(500).send("Invalid query params");
   }
-  res.status(500).send("Invalid query params");
 });
 
 module.exports = patientRouter;

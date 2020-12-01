@@ -1,4 +1,4 @@
-FROM node:lts as build
+FROM node:15.3.0-alpine3.10 as build
 
 RUN mkdir -p /usr/src/app
 
