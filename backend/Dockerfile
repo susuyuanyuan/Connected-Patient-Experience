@@ -1,6 +1,8 @@
 FROM node:lts as build
 
-WORKDIR /app
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
 # used for accessing mongodb
 ENV MONGODB_URL="mongodb+srv://group-project:Ka6V91u9Bm9g2Doo@cluster0.bf6rf.mongodb.net/patients?retryWrites=true&w=majority"
 # Install app dependencies
@@ -11,8 +13,8 @@ COPY package*json ./
 RUN npm -v
 RUN npm install
 
-COPY . /app
+COPY . .
 
 EXPOSE 5000
 
-CMD ["node", "/app/server.js"]
+CMD ["node", "server.js"]
