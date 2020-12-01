@@ -1,4 +1,4 @@
-# Connected Patient Experience Special Instruction
+# Special Instruction
 
 ### Team Name
 

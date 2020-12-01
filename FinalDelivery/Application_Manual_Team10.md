@@ -1,4 +1,4 @@
-# Connected Patient Experience User Manual
+# User Manual
 
 ### Team Name
 
