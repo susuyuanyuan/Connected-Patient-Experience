@@ -16,27 +16,27 @@ Team 10
 
 ### Research Plan
 
-![ResearchPlan](.\images\ResearchPlan.png)
+![ResearchPlan](./images/ResearchPlan.png)
 
 ### User-friendly Portal examples
 
-![Example1](.\images\Example1.png)
+![Example1](./images/Example1.png)
 
-![Example2](.\images\Example2.png)
+![Example2](./images/Example2.png)
 
 ### Patient Portal usage condition survey
 
-![Usage_survey](.\images\Usage_survey.png)
+![Usage_survey](./images/Usage_survey.png)
 
 ### Case Study
 
 ​                             Table 3: Average My UNC Chart User Activity; Griffin A. et al. Appl Clin Inform. 2016; 7(2): 489–501.
 
-![Case1](.\images\Case1.png)
+![Case1](./images/Case1.png)
 
 ### Research Analysis
 
-![Analysis1](.\images\Analysis1.png)
+![Analysis1](./images/Analysis1.png)
 
 ### References
 
