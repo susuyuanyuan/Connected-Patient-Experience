@@ -41,13 +41,13 @@ The application will be deployed using HDAP: The GT Health Data Analytics Platfo
 
 The diagram below shows various logical/functional components of our architecture and how they are connected. Each component represents a cluster of related functionality. Following are the components in our design.
 
-![Component Diagram](.\images\Component Diagram.png)
+![Component Diagram](./images/Component Diagram.png)
 
 ### 2.2 Deployment Diagram
 
 The application will run on HDAP for deployment.  The below diagram shows the deployment of our application.
 
-![Deployment](.\images\Deployment.png)
+![Deployment](./images/Deployment.png)
 
 
 ## 3 Low-Level Design
@@ -56,7 +56,7 @@ The application will run on HDAP for deployment.  The below diagram shows the de
 
 The class diagram can be seen below. All the names used in all the diagrams above are such that the logical structuring of the entire architecture becomes easy to understand. Each component of the component diagram discussed earlier contains multiple classes from the class diagram to provide the discussed functionalities. 
 
-![CS6440_Team10_UML_v1 - Page 1](.\images\CS6440_Team10_UML_v1 - Page 1.png)
+![CS6440_Team10_UML_v1 - Page 1](./images/CS6440_Team10_UML_v1 - Page 1.png)
 
 
 
@@ -64,4 +64,4 @@ The class diagram can be seen below. All the names used in all the diagrams abov
 
 Blow is the main interface screens that form the part of the UI design. A full demo of the user interface could be found from the video demo from the following link: https://youtu.be/oG9mXxse8Yw
 
-![User_interface](.\images\User_interface.png)
+![User_interface](./images/User_interface.png)

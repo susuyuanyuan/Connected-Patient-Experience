@@ -18,4 +18,4 @@ Project #22: Connected Patient Experience
 
 ## 1 Use Case Diagram
 
-![usercase](.\images\usercase.png)
+![usercase](./images/usercase.png)
