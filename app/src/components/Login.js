@@ -11,16 +11,7 @@ const Login = () => {
   const auth = useAuth();
 
   let login = () => {
-    auth.signIn(
-      username,
-      password,
-      () => {
-        history.push("/home");
-      },
-      () => {
-        window.alert("Invalid user name and password");
-      }
-    );
+    auth.signIn(username, password);
   };
 
   useEffect(() => {

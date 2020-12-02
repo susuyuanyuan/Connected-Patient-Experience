@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import { useAuth } from "./Auth";
-import { AddPrescription, FulfillPrescription } from "../client/client";
+import { addPrescription, fulfillPrescription } from "./action";
+import { useDispatch } from "react-redux";
 
 const Pharmacy = ({ history }) => {
   const drugNames = ["Aspirin", "Cetirizine", "Benzydamine"];
@@ -10,6 +11,7 @@ const Pharmacy = ({ history }) => {
 
   const auth = useAuth();
   const user = auth.user;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!auth.user) {
@@ -37,13 +39,13 @@ const Pharmacy = ({ history }) => {
                   <td key={drugName}>
                     <button
                       onClick={() => {
-                        AddPrescription(user._id, {
-                          drugName: drugName,
-                          quantity: 1,
-                          requestDate: new Date(),
-                        }).then(() => {
-                          auth.update();
-                        });
+                        dispatch(
+                          addPrescription({
+                            drugName: drugName,
+                            quantity: 1,
+                            requestDate: new Date(),
+                          })
+                        );
                       }}
                     >
                       Click to Refill
@@ -98,11 +100,9 @@ const Pharmacy = ({ history }) => {
           className="back-button mt-5"
           onClick={() => {
             if (selected.size !== 0) {
-              FulfillPrescription(user._id, Array.from(selected)).then(() => {
-                auth.update();
-              });
+              dispatch(fulfillPrescription(selected));
             } else {
-              console.log("didn't select anything");
+              window.alert("Please at least select one entry");
             }
           }}
         >

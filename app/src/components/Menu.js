@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "./Header";
 import { useAuth } from "./Auth";
@@ -7,9 +7,11 @@ const Menu = (props) => {
   const user = useAuth().user;
   const history = useHistory();
 
-  if (!user) {
-    history.push("/");
-  }
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
 
   return (
     <div className="menu-container">

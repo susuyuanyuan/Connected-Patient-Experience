@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
-import { AddMessage } from "../client/client";
 import { useAuth } from "./Auth";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addMessage } from "./action";
 
 const Messages = () => {
   const [title, setTitle] = useState(null);
   const [message, setMessage] = useState(null);
   const auth = useAuth();
-
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!auth.user) {
@@ -21,13 +22,7 @@ const Messages = () => {
 
   const handleSubmit = () => {
     if (title && message) {
-      AddMessage(auth.user, {
-        subject: title,
-        content: message,
-      }).then(() => {
-        window.alert("Message send success");
-        history.push("/home");
-      });
+      dispatch(addMessage(title, message, history));
     } else {
       window.alert("Please input subject and content of your message");
     }
@@ -40,7 +35,12 @@ const Messages = () => {
         <form>
           <div>Subject:</div>
           <div>
-            <input type="text" onChange={(e) => setTitle(e.target.value)} />
+            <input
+              type="text"
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
           </div>
           <div>Message:</div>
           <div>
@@ -49,21 +49,26 @@ const Messages = () => {
               className="message"
               size="100"
               placeholder="type message here"
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => {
+                setMessage(e.target.value);
+              }}
             />
           </div>
           <div>
             <button
+              type="button"
               className="back-button mt-5"
-              onClick={(e) => history.push("/home")}
+              onClick={(e) => {
+                history.push("/home");
+              }}
             >
               Back to Menu
             </button>
             <button
-              type="submit"
+              type="button"
+              onClick={handleSubmit}
               active={isValid}
               className={isValid ? "back-button mt-5" : "disabled-button mt-5"}
-              onClick={handleSubmit}
             >
               Send to Primary Doctor
             </button>
