@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Header from "./Header";
+import { useAuth } from "./Auth";
+import { SetDoctor } from "../client/client";
 
 const Doctor = ({ history }) => {
-  const [doctor, setDoctor] = useState(null);
+  let auth = useAuth();
+  const [doctor, setDoctor] = useState(auth.user.doctorName);
 
   return (
     <div className="section-container">
@@ -14,19 +17,24 @@ const Doctor = ({ history }) => {
             name=""
             className="ml-3"
             id="doctor"
+            value={doctor}
             onChange={(e) => {
               setDoctor(e.target.value);
             }}
           >
-            <option value="csu">Chih-Yuan Su</option>
-            <option value="xlou">Xiaochu Lou</option>
-            <option value="ychen">Yian Chen</option>
+            <option value="Chih-Yuan Su">Chih-Yuan Su</option>
+            <option value="Xiaochu Lou">Xiaochu Lou</option>
+            <option value="Yian Chen">Yian Chen</option>
           </select>
         </div>
         <button
           className="back-button mt-5"
           onClick={() => {
-            history.push("/");
+            if (doctor) {
+              SetDoctor(auth.user._id, doctor);
+              auth.user.doctorName = doctor;
+            }
+            history.push("/home");
           }}
         >
           Back to Menu

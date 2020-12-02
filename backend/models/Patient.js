@@ -49,7 +49,7 @@ let patientSchema = mongoose.Schema(
         content: String,
       },
     ],
-    Pharmacy: [
+    prescriptions: [
       {
         drugName: String,
         quantity: Number,

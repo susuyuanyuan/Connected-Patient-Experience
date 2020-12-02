@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import { AddMessage } from "../client/client";
 import { useAuth } from "./Auth";
+import { useHistory } from "react-router-dom";
 
-const Messages = ({ history }) => {
+const Messages = () => {
   const [title, setTitle] = useState(null);
   const [message, setMessage] = useState(null);
   const auth = useAuth();
+
+  const history = useHistory();
 
   useEffect(() => {
     if (!auth.user) {
@@ -14,21 +17,27 @@ const Messages = ({ history }) => {
     }
   }, [auth, history]);
 
-  const isValid = title !== null && message !== null;
+  const isValid = title && message;
+
+  const handleSubmit = () => {
+    if (title && message) {
+      AddMessage(auth.user, {
+        subject: title,
+        content: message,
+      }).then(() => {
+        window.alert("Message send success");
+        history.push("/home");
+      });
+    } else {
+      window.alert("Please input subject and content of your message");
+    }
+  };
+
   return (
     <div className="section-container">
       <Header />
       <main className="main">
-        <form
-          onSubmit={() => {
-            if (title && message) {
-              AddMessage(auth.user, { subject: title, content: message });
-              history.push("/");
-            } else {
-              window.alert("Please input subject and content of your message");
-            }
-          }}
-        >
+        <form>
           <div>Subject:</div>
           <div>
             <input type="text" onChange={(e) => setTitle(e.target.value)} />
@@ -44,12 +53,17 @@ const Messages = ({ history }) => {
             />
           </div>
           <div>
-            <button type="submit" className="back-button mt-5">
+            <button
+              className="back-button mt-5"
+              onClick={(e) => history.push("/home")}
+            >
               Back to Menu
             </button>
             <button
               type="submit"
+              active={isValid}
               className={isValid ? "back-button mt-5" : "disabled-button mt-5"}
+              onClick={handleSubmit}
             >
               Send to Primary Doctor
             </button>

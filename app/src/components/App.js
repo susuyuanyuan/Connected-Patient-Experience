@@ -1,12 +1,9 @@
-import React, { useContext, createContext, useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  Redirect,
   useHistory,
-  useLocation,
 } from "react-router-dom";
 
 import { useAuth, ProvideAuth } from "./Auth";
@@ -50,7 +47,7 @@ function AuthButton() {
       Welcome! {auth.user.name + " "}
       <button
         onClick={() => {
-          auth.signout(() => history.push("/"));
+          auth.signOut(() => history.push("/"));
         }}
       >
         Sign out
