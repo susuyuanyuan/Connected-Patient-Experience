@@ -47,6 +47,7 @@ let patientSchema = mongoose.Schema(
       {
         subject: String,
         content: String,
+        date: Date,
       },
     ],
     prescriptions: [

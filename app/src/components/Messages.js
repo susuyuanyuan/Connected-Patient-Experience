@@ -4,6 +4,7 @@ import { useAuth } from "./Auth";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addMessage } from "./action";
+import { parseISO, formatDistanceToNow } from "date-fns";
 
 const Messages = () => {
   const [title, setTitle] = useState(null);
@@ -27,6 +28,8 @@ const Messages = () => {
       window.alert("Please input subject and content of your message");
     }
   };
+
+  const messages = auth.user.messages;
 
   return (
     <div className="section-container">
@@ -75,6 +78,18 @@ const Messages = () => {
           </div>
         </form>
       </main>
+      <label>Message History</label>
+      {messages.map((message) => {
+        return (
+          <article className="post-excerpt" key={message._id}>
+            <h3>{message.subject}</h3>
+            <span title={message.date}>
+              &nbsp; <i>{formatDistanceToNow(parseISO(message.date))} ago</i>
+            </span>
+            <p>{message.content}</p>
+          </article>
+        );
+      })}
     </div>
   );
 };

@@ -52,6 +52,7 @@ patientRouter.post("/message", async (req, res) => {
       !input.message ||
       !input.message.subject ||
       !input.message.content ||
+      !input.message.date ||
       !input.userId
     ) {
       res.status(500).send("Invalid input data");

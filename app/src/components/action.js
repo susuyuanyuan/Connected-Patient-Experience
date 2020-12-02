@@ -38,10 +38,13 @@ export function login(username, password) {
   return (dispatch, getState) => {
     FindUser(username, password)
       .then((res) => {
-        if (!res) {
+        if (!res || !res.data) {
           dispatch(setError("Invalid username and password"));
           return;
         }
+        res.data.messages.sort((a, b) => {
+          return a.date.localeCompare(b.date);
+        });
         dispatch(setUser(res.data));
       })
       .catch((err) => {
@@ -88,6 +91,7 @@ export function addMessage(title, message, history) {
     AddMessage(getState().user._id, {
       subject: title,
       content: message,
+      date: new Date(),
     })
       .then(() => {
         window.alert("Message send success");
