@@ -87,9 +87,13 @@ for (let i = 0; i < 10; i++) {
   for (let j = 0; j <= getRandomInt(1, 5); j++) {
     newPatientJson["medicalRecords"].push({
       conditionName: medicalConditionList[shuffledId[j]],
-      recordedDate: new Date(),
+      recordedDate: faker.date.past(5),
     });
   }
+
+  newPatientJson["medicalRecords"] = newPatientJson["medicalRecords"].sort(
+    (a, b) => b.recordedDate - a.recordedDate
+  );
 
   if (i == 0) {
     newPatientJson.name = "admin";

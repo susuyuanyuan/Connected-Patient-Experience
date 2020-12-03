@@ -52,7 +52,10 @@ const Menu = (props) => {
               <i className="fas fa-capsules" style={{ color: "#34626c" }}></i>
               &nbsp;Pharmacy
             </button>
-            <button className="display-button">
+            <button
+              className="display-button"
+              onClick={() => history.push("/medicalRecords")}
+            >
               <i
                 className="fas fa-book-medical"
                 style={{ color: "#34626c" }}

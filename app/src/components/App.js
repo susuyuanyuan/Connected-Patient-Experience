@@ -15,6 +15,7 @@ import Login from "./Login";
 import Contact from "./Contact";
 import Messages from "./Messages";
 import Pharmacy from "./Pharmacy";
+import MedicalRecords from "./MedicalRecords";
 import "./styles.css";
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/pharmacy" component={Pharmacy} />
             <Route exact path="/messages" component={Messages} />
+            <Route exact path="/medicalRecords" component={MedicalRecords} />
           </Switch>
         </div>
       </Router>
