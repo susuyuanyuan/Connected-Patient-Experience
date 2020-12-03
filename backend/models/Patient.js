@@ -27,27 +27,32 @@ let patientSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    medicalRecords: {
-      type: [
-        {
-          // unit in cm
-          height: Number,
-          // unit in kg
-          weight: Number,
-          // unit in mg/dL
-          HDL: Number,
-          // uint in mg/dL
-          LDL: Number,
-          // unit in mmHg
-          BP: Number,
-        },
-      ],
-    },
+    labResults: [
+      {
+        // unit in cm
+        height: Number,
+        // unit in kg
+        weight: Number,
+        // unit in mg/dL
+        HDL: Number,
+        // uint in mg/dL
+        LDL: Number,
+        // unit in mmHg
+        BP: Number,
+      },
+    ],
+    medicalRecords: [
+      {
+        conditionName: { type: String, required: true },
+        recordedDate: { type: Date, required: true },
+        note: String,
+      },
+    ],
     messages: [
       {
-        subject: String,
-        content: String,
-        date: Date,
+        subject: { type: String, required: true },
+        content: { type: String, required: true },
+        date: { type: Date, required: true },
       },
     ],
     prescriptions: [

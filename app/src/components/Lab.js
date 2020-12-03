@@ -22,15 +22,15 @@ const Lab = ({ history }) => {
   useEffect(() => {
     if (
       !user ||
-      !user.medicalRecords ||
-      user.medicalRecords.length === 0 ||
-      !user.medicalRecords[0]
+      !user.labResults ||
+      user.labResults.length === 0 ||
+      !user.labResults[0]
     ) {
       history.push("/");
     }
   }, [user, history]);
 
-  const labResult = user.medicalRecords[0];
+  const labResult = user.labResults[0];
 
   return (
     <div className="lab-container">
