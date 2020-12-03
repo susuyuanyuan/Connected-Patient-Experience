@@ -9,11 +9,13 @@ const MedicalRecords = () => {
 
   useEffect(() => {
     if (!auth.user) {
-      history.push("/home");
+      history.push("/");
     }
   }, [auth, history]);
 
-  const medicalRecords = auth.user.medicalRecords;
+  if (!auth.user) {
+    return null;
+  }
 
   return (
     <div className="section-container">
@@ -23,15 +25,19 @@ const MedicalRecords = () => {
           <tr className="thead">
             <th>Condition</th>
             <th>Recorded Date</th>
+            <th>Clinical Status</th>
+            <th>Verification Status</th>
             <th>Note</th>
           </tr>
         </thead>
         <tbody>
-          {medicalRecords.map((record) => {
+          {auth.user.medicalRecords.map((record) => {
             return (
               <tr key={record._id}>
                 <td>{record.conditionName}</td>
                 <td>{record.recordedDate}</td>
+                <td>{record.clinicalStatus}</td>
+                <td>{record.verificationStatus}</td>
                 <td>{record.note}</td>
               </tr>
             );

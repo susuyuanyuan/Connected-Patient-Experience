@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import { useAuth } from "./Auth";
 import { SetDoctor } from "../client/client";
 
 const Doctor = ({ history }) => {
   let auth = useAuth();
-  const [doctor, setDoctor] = useState(auth.user.doctorName);
+
+  const [doctor, setDoctor] = useState(auth.user ? auth.user.doctorName : "");
+
+  useEffect(() => {
+    if (!auth.user) {
+      history.push("/");
+    }
+  }, [auth, history]);
 
   return (
     <div className="section-container">

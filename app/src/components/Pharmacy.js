@@ -19,6 +19,10 @@ const Pharmacy = ({ history }) => {
     }
   }, [auth, history]);
 
+  if (!auth.user) {
+    return null;
+  }
+
   return (
     <div className="section-container">
       <Header />

@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Header";
+import { useAuth } from "./Auth";
 
 const Contact = ({ history }) => {
+  const auth = useAuth();
+
+  useEffect(() => {
+    if (!auth.user) {
+      history.push("/");
+    }
+  }, [auth, history]);
+
+  if (!auth.user) {
+    return null;
+  }
+
   return (
     <div className="section-container">
       <Header />

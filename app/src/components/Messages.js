@@ -15,9 +15,13 @@ const Messages = () => {
 
   useEffect(() => {
     if (!auth.user) {
-      history.push("/home");
+      history.push("/");
     }
   }, [auth, history]);
+
+  if (!auth.user) {
+    return null;
+  }
 
   const isValid = title && message;
 

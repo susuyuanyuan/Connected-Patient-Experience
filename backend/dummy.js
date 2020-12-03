@@ -64,6 +64,7 @@ function shuffle(array) {
 for (let i = 0; i < 10; i++) {
   let newPatientJson = {
     name: faker.name.findName(),
+    username: faker.name.findName().toLowerCase(),
     email: faker.internet.email(),
     password: faker.internet.password(),
     phone: faker.phone.phoneNumberFormat(),
@@ -88,6 +89,8 @@ for (let i = 0; i < 10; i++) {
     newPatientJson["medicalRecords"].push({
       conditionName: medicalConditionList[shuffledId[j]],
       recordedDate: faker.date.past(5),
+      clinicalStatus: "active",
+      verificationStatus: "confirmed",
     });
   }
 

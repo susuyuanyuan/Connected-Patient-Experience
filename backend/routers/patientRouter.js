@@ -2,16 +2,15 @@ let patientRouter = require("express").Router();
 let Patient = require("../models/Patient.js");
 
 function Authenticate(req, res) {
+  console.log(req.query);
   Patient.findOne(
     {
-      name: req.query.username,
+      username: req.query.username,
       password: req.query.password,
     },
     (err, doc) => {
-      if (err) {
-        console.error(
-          "Failed to find user: " + req.query.username + " because" + err
-        );
+      if (err || !doc) {
+        console.error("Failed to find user: " + req.query.username);
         res.status(500).send(err);
       } else {
         res.json(doc);

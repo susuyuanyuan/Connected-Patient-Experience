@@ -6,6 +6,10 @@ let patientSchema = mongoose.Schema(
     photo: String,
     name: {
       type: String,
+      required: true,
+    },
+    username: {
+      type: String,
       lowercase: true,
       required: true,
     },
@@ -45,6 +49,8 @@ let patientSchema = mongoose.Schema(
       {
         conditionName: { type: String, required: true },
         recordedDate: { type: Date, required: true },
+        clinicalStatus: String,
+        verificationStatus: String,
         note: String,
       },
     ],

@@ -11,7 +11,7 @@ const Lab = ({ history }) => {
   const [showLDL, setShowLDL] = useState(false);
   const [showBP, setShowBP] = useState(false);
 
-  const user = useAuth().user;
+  const auth = useAuth();
 
   const optionsCursorTrueWithMargin = {
     followCursor: true,
@@ -20,16 +20,16 @@ const Lab = ({ history }) => {
   };
 
   useEffect(() => {
-    if (
-      !user ||
-      !user.labResults ||
-      user.labResults.length === 0 ||
-      !user.labResults[0]
-    ) {
+    if (!auth.user) {
       history.push("/");
     }
-  }, [user, history]);
+  }, [auth, history]);
 
+  if (!auth.user) {
+    return null;
+  }
+
+  const user = auth.user;
   const labResult = user.labResults[0];
 
   return (

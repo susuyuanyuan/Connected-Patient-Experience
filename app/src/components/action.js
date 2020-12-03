@@ -40,16 +40,21 @@ export function login(username, password) {
       .then((res) => {
         if (!res || !res.data) {
           dispatch(setError("Invalid username and password"));
+          window.alert("Invalid username and password");
           return;
         }
         res.data.messages.sort((a, b) => {
           return a.date.localeCompare(b.date);
+        });
+        res.data.medicalRecords.sort((a, b) => {
+          return new Date(b.recordedDate) - new Date(a.recordedDate);
         });
         dispatch(setUser(res.data));
       })
       .catch((err) => {
         console.log(err);
         dispatch(setError(err));
+        window.alert(err);
       });
   };
 }
