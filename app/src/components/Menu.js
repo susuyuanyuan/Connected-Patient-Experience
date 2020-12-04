@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "./Header";
 import { useAuth } from "./Auth";
@@ -7,9 +7,11 @@ const Menu = (props) => {
   const user = useAuth().user;
   const history = useHistory();
 
-  if (!user) {
-    history.push("/");
-  }
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
 
   return (
     <div className="menu-container">
@@ -50,7 +52,10 @@ const Menu = (props) => {
               <i className="fas fa-capsules" style={{ color: "#34626c" }}></i>
               &nbsp;Pharmacy
             </button>
-            <button className="display-button">
+            <button
+              className="display-button"
+              onClick={() => history.push("/medicalRecords")}
+            >
               <i
                 className="fas fa-book-medical"
                 style={{ color: "#34626c" }}

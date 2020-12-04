@@ -20,7 +20,7 @@ steps:
     image: plugins/docker
     settings:
       repo: gt-build.hdap.gatech.edu/connected-patient-experience-backend
-      context: app
+      context: backend
       dockerfile: backend/Dockerfile
       tags:
         - latest

@@ -6,6 +6,10 @@ let patientSchema = mongoose.Schema(
     photo: String,
     name: {
       type: String,
+      required: true,
+    },
+    username: {
+      type: String,
       lowercase: true,
       required: true,
     },
@@ -27,29 +31,37 @@ let patientSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    medicalRecords: {
-      type: [
-        {
-          // unit in cm
-          height: Number,
-          // unit in kg
-          weight: Number,
-          // unit in mg/dL
-          HDL: Number,
-          // uint in mg/dL
-          LDL: Number,
-          // unit in mmHg
-          BP: Number,
-        },
-      ],
-    },
-    messages: [
+    labResults: [
       {
-        subject: String,
-        content: String,
+        // unit in cm
+        height: Number,
+        // unit in kg
+        weight: Number,
+        // unit in mg/dL
+        HDL: Number,
+        // uint in mg/dL
+        LDL: Number,
+        // unit in mmHg
+        BP: Number,
       },
     ],
-    Pharmacy: [
+    medicalRecords: [
+      {
+        conditionName: { type: String, required: true },
+        recordedDate: { type: Date, required: true },
+        clinicalStatus: String,
+        verificationStatus: String,
+        note: String,
+      },
+    ],
+    messages: [
+      {
+        subject: { type: String, required: true },
+        content: { type: String, required: true },
+        date: { type: Date, required: true },
+      },
+    ],
+    prescriptions: [
       {
         drugName: String,
         quantity: Number,

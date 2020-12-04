@@ -1,6 +1,7 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext } from "react";
 
-import { FindUser } from "../client/client";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "./action";
 
 /** For more details on
  * `authContext`, `ProvideAuth`, `useAuth` and `useProvideAuth`
@@ -18,31 +19,20 @@ export function useAuth() {
 }
 
 function useProvideAuth() {
-  const [user, setUser] = useState(null);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
-  const signin = (userIn, passwordIn, onSuccess, onFailure) => {
-    FindUser(userIn, passwordIn)
-      .then((res) => {
-        if (!res) {
-          return;
-        }
-        setUser(res.data);
-        onSuccess();
-      })
-      .catch((err) => {
-        console.log(err);
-        onFailure();
-      });
+  const signIn = (userIn, passwordIn) => {
+    dispatch(login(userIn, passwordIn));
   };
 
-  const signout = (onSignOut) => {
-    setUser(null);
-    onSignOut();
+  const signOut = () => {
+    dispatch(logout(null));
   };
 
   return {
     user,
-    signin,
-    signout,
+    signIn,
+    signOut,
   };
 }

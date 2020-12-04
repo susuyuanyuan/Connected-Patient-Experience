@@ -4,7 +4,7 @@ FROM node:lts as build
 # ENV PUBLIC_URL="https://apps.hdap.gatech.edu/connected-patient-experience-app/"
 ENV PATH /app/node_modules/.bin:$PATH
 # used for getting the server address for the backend
-ENV REACT_APP_SERVER_URL https://apps.hdap.gatech.edu/connected-patient-experience-backend:5000
+ENV REACT_APP_SERVER_URL https://apps.hdap.gatech.edu/connected-patient-experience-backend
 WORKDIR /app
 COPY package*json ./
 RUN npm -v

@@ -4,23 +4,14 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "./Auth";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("admin");
+  const [password, setPassword] = useState("admin");
 
   const history = useHistory();
   const auth = useAuth();
 
   let login = () => {
-    auth.signin(
-      username,
-      password,
-      () => {
-        history.push("/home");
-      },
-      () => {
-        window.alert("Invalid user name and password");
-      }
-    );
+    auth.signIn(username, password);
   };
 
   useEffect(() => {
@@ -41,6 +32,7 @@ const Login = () => {
             <input
               type="text"
               placeholder="Letters only"
+              value={username}
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
@@ -53,6 +45,7 @@ const Login = () => {
             <input
               type="text"
               placeholder="Enter password"
+              value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
