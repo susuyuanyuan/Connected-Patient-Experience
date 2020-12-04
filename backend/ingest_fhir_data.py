@@ -93,9 +93,8 @@ def get_random_string(length):
 
 
 doctor_choices = ["Chih-Yuan Su", "Xiaochu Lou", "Yian Chen"]
-mongoUrl = "mongodb://localhost:27017"
-# mongoUrl =
-# "mongodb+srv://group-project:Ka6V91u9Bm9g2Doo@cluster0.bf6rf.mongodb.net/patients?retryWrites=true&w=majority"
+# mongoUrl = "mongodb://localhost:27017"
+mongoUrl = "mongodb+srv://group-project:Ka6V91u9Bm9g2Doo@cluster0.bf6rf.mongodb.net/patients?retryWrites=true&w=majority"
 
 mongo_client = MongoClient(mongoUrl)
 patient_db = mongo_client["patients"]

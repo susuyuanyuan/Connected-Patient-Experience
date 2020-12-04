@@ -12,7 +12,17 @@ Frontend: https://rancher.hdap.gatech.edu/p/c-2n8rd:p-wsjwm/workload/deployment:
 
 Backend: https://rancher.hdap.gatech.edu/p/c-2n8rd:p-wsjwm/workload/deployment:ns-connected-patient-experience:connected-patient-experience-backend
 
-TODO(Chih-Yuan Su) Fill more details here
+A few username and password to try:
+
+| username        | password |
+| --------------- | -------- |
+| admin           | admin    |
+| treutelearlean  | mSQfQNG7 |
+| torphysergio    | dLAl7ltq |
+| trantowtracy    | LRYpURud |
+| kautzermelissia | YTr0ETws |
+| wintheiserbrain | FRK3lSpY |
+| gerlachgavin    | O0dOKsBX |
 
 # Author
 
